@@ -24,8 +24,6 @@ if CLIENT then
 		HitTrans = 300
 	end)
 	
-	
-	
 	function BurHitmarkerDraw()
 	
 		HitTrans = math.Clamp(HitTrans - FrameTime()*300*2,0,300)
@@ -36,15 +34,7 @@ if CLIENT then
 		local Size = 10 * (FinalAlpha/255)
 		local Offset = (10*(FinalAlpha/255)) + Size
 		
-		
-		
 		surface.SetDrawColor(Color(255,255,255,FinalAlpha))
-		--surface.SetMaterial(Mat)
-		--surface.DrawTexturedRectRotated( x, y, 64, 64, 45 )
-		--surface.DrawTexturedRectRotated( x, y, 64, 64, 45 + 90 )
-		--surface.DrawTexturedRectRotated( x, y, 64, 64, 45 + 180 )
-		--surface.DrawTexturedRectRotated( x, y, 64, 64, 45 + 270 )
-
 		surface.DrawLine( x - Size + Offset, y - Size + Offset, x + Size + Offset, y + Size + Offset)
 		surface.DrawLine( x - Size - Offset, y - Size - Offset , x + Size - Offset, y + Size - Offset)	
 		surface.DrawLine( x - Size + Offset, y + Size - Offset, x + Size + Offset, y - Size - Offset)
@@ -55,5 +45,3 @@ if CLIENT then
 	hook.Add("HUDPaint","Burger's Hitmarker HUDPaint",BurHitmarkerDraw)
 	
 end
-
-print("Loaded")
