@@ -5,9 +5,11 @@ if SERVER then
 
 	function BurHitmarkers(ply,hitgroup,dmginfo)
 		local attacker = dmginfo:GetAttacker()
-		net.Start("BurgerHitmarkers")
-			net.WriteBool(true)
-		net.Send(attacker)
+		if attacker:IsPlayer() then
+			net.Start("BurgerHitmarkers")
+				net.WriteBool(true)
+			net.Send(attacker)
+		end
 	end
 	hook.Add("ScalePlayerDamage","Burger's Hitmarker Damage",BurHitmarkers)
 	
@@ -20,7 +22,6 @@ if CLIENT then
 	local HitTrans = 0
 
 	net.Receive("BurgerHitmarkers",function(len,ply)
-		--print("hit")
 		HitTrans = 300
 	end)
 	
